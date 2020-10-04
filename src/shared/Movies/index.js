@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import enhancer from './enhancer'
 import LazyLoad from 'react-lazyload'
 
 function MoviesComponent(props){
@@ -40,4 +39,4 @@ function MoviesComponent(props){
     );
 }
 
-export default enhancer(MoviesComponent);
+export default MoviesComponent;
