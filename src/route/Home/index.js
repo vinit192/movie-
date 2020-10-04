@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import enhancer from './enhancer'
-import Movies from '../../shared/Movies'
+import Movies from '../../shared/movie'
 
 function HomeComponent(props){
 
