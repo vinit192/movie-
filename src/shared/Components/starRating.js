@@ -15,7 +15,7 @@ export default class StarRatingComponent extends React.Component{
                 numberOfStars={10}
                 name='rating'
                 starDimension="20px"
-                starSpacing="1px"
+                starSpacing="0px"
                 />
         </Fragment>
     )

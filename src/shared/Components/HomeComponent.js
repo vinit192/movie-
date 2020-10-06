@@ -268,20 +268,22 @@ export default class HomeComponent extends React.Component {
       render() {
         return (
           <Fragment>
-                    <div className="border mx-5 my-2">
+                    <div className={`border my-2 ${this.state.isMobile?'':'mx-5'}`}>
                         <p className="header">Top Movies</p>
                         
                         {this.state.movieList &&
                         
                            this.state.movieList.slice(this.state.start,this.state.end).map((movie , i) => (
                                 <div key={movie.rank}>
-                                    <Movies movie = {movie} />
+                                    <Movies movie = {movie} isMobile={this.state.isMobile} />
                                 </div>
                             ))
                         }
+                        {!this.state.isMobile &&
                         <div className="m-2">
                           <Pagination total={this.state.MovieLength} showPerPage={this.state.showPerPage} onPaginationChange={this.onPaginationChange} onButtonClick={this.onButtonClick} start={this.state.start} end={this.state.end} length={this.state.MovieLength} />
                         </div>
+                        }
                     </div>
             </Fragment>
         );
