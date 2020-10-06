@@ -1,11 +1,12 @@
 import React, { Fragment } from 'react';
 import Movies from '../../shared/Components/movie'
 import Pagination from '../../shared/Components/pagination'
-import {convertRating, checkDevice} from "../../shared/utility"
+import {convertRating} from "../../shared/utility/ratingUtility"
+import {checkDevice} from "../../shared/utility/checkDeviceUtility"
 
-export default class CardComponent extends React.Component {
-    constructor(){
-        super();
+export default class HomeComponent extends React.Component {
+    constructor(props){
+        super(props);
         this.state={
             movieList : [      {
                 id:"tt0111161",

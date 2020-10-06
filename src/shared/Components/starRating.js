@@ -1,12 +1,16 @@
 import React, { Fragment } from 'react';
 import StarRatings from 'react-star-ratings';
 
-function StarRatingComponent(props){
-    const {rating} = props;
+export default class StarRatingComponent extends React.Component{
+    //const {rating} = props;
+    constructor(props){
+        super(props);;
+    }
+    render(){
     return (
         <Fragment>
             <StarRatings
-                rating={parseFloat(rating)}
+                rating={parseFloat(this.props.rating)}
                 starRatedColor="yellow"
                 numberOfStars={10}
                 name='rating'
@@ -15,5 +19,5 @@ function StarRatingComponent(props){
                 />
         </Fragment>
     )
+    }
 }
-export default StarRatingComponent;

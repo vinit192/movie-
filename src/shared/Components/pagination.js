@@ -1,13 +1,20 @@
-import React, { useState, useEffect } from "react";
-const Pagination = ({ showPerPage, onPaginationChange, total,onButtonClick,start,end }) => {
+import React, {Fragment} from "react";
 
-   
-    return (
-        <React.Fragment>
-            {start!==0&&<button onClick={() => onButtonClick('prev')}>Previous</button>}
-            {end!== total &&<button onClick={() => onButtonClick('next')}>Next</button>}
-        </React.Fragment>
-    )
-};
+export default class Pagination extends React.Component {
+    constructor(props){
+        super(props);
+       
+    }
+    render() {
+        return (
+            <Fragment>
+                {this.props.start!==0&&<button className="btn btn-link" onClick={() => this.props.onButtonClick('prev')}>Previous</button>}
 
-export default Pagination;
+                {this.props.end!== this.props.total &&<button className="btn btn-link" onClick={() => this.props.onButtonClick('next')}>Next</button>}
+            </Fragment>
+        )
+    }
+
+} 
+
+
