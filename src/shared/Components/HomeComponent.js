@@ -1,8 +1,10 @@
 import React, { Fragment } from 'react';
-import Movies from '../../shared/Components/movie'
-import Pagination from '../../shared/Components/pagination'
 import {convertRating} from "../../shared/utility/ratingUtility"
 import {checkDevice} from "../../shared/utility/checkDeviceUtility"
+import Desktop from "../../shared/Components/DesktopComponent"
+import Mobile from "../../shared/Components/MobileComponent"
+import { Suspense, lazy } from 'react';
+import axios from 'axios';
 
 export default class HomeComponent extends React.Component {
     constructor(props){
@@ -228,63 +230,37 @@ export default class HomeComponent extends React.Component {
                 imDbRating:"8.6",
                 imDbRatingCount:"1409962"
              }],
+             movieList123:[],
              isMobile:'',
-             MovieLength:0,
-             start:0,
-             end:5,
-             showPerPage:5
         }
-        this.onPaginationChange = this.onPaginationChange.bind(this);
-        this.onButtonClick =this.onButtonClick.bind(this);
     }
 
     componentDidMount(){
         //api call()
+    //     const API_KEY = 'k_HMZUnMrG';
+    //     axios.get(`https://imdb-api.com/en/API/Top250Movies/${API_KEY}`)
+    //   .then(res => {
+    //     this.setState({movieList:res.data.items})
+    //   })
         let isMobile = checkDevice()
-         this.setState({isMobile:isMobile})
-        let data = convertRating(this.state.movieList)
-        this.setState({movieList:data,MovieLength:data.length})
+        this.setState({isMobile:isMobile})
+        
     }
-    onPaginationChange(start, end){
-        console.log(start,end)
-        this.setState({start:start})
-       //this.setState({start:start,end:end})
-    }
-    onButtonClick(type){
-        let a=this.state.start;
-        let b= this.state.end;
-        if (type === 'prev') {
-                    this.setState({start:a-5})
-                    this.setState({end:b-5})
-                    //counter === 1 ? setCounter(1) : setCounter(counter - 1);
-                } else if (type === 'next') {
-                    console.log("111")
-                    this.setState({start:a+5})
-                    this.setState({end:b+5})
-                   // Math.ceil(total / showPerPage) === counter ? setCounter(counter) : setCounter(counter + 1);
-                }
-    }
+    
    
       render() {
         return (
           <Fragment>
-                    <div className={`border my-2 ${this.state.isMobile?'':'mx-5'}`}>
-                        <p className="header">Top Movies</p>
-                        
-                        {this.state.movieList &&
-                        
-                           this.state.movieList.slice(this.state.start,this.state.end).map((movie , i) => (
-                                <div key={movie.rank}>
-                                    <Movies movie = {movie} isMobile={this.state.isMobile} />
-                                </div>
-                            ))
+                <div className={`border my-2 ${this.state.isMobile?'':'mx-5'}`}>
+                    <p className="header">Top Movies</p>
+                    <Suspense fallback={<h1>Loading profile...</h1>}>
+                        {!this.state.isMobile?
+                            <Desktop movieList={this.state.movieList}/> :
+                            <Mobile movieList={this.state.movieList}/>
                         }
-                        {!this.state.isMobile &&
-                        <div className="m-2 d-flex justify-content-center">
-                          <Pagination total={this.state.MovieLength} showPerPage={this.state.showPerPage} onPaginationChange={this.onPaginationChange} onButtonClick={this.onButtonClick} start={this.state.start} end={this.state.end} length={this.state.MovieLength} />
-                        </div>
-                        }
-                    </div>
+                    </Suspense>
+                        
+                </div>
             </Fragment>
         );
       }

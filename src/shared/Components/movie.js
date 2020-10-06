@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import LazyLoad from 'react-lazyload';
 import StarRating from './starRating';
+import {calcuateRating} from '../utility/ratingUtility'
 
 export default class MoviesComponent extends React.Component {
     constructor(props){
@@ -48,7 +49,7 @@ export default class MoviesComponent extends React.Component {
                     </div>
                     <div className="col-6 col-md-4">
                         <div className=" pr-3 float-right">
-                            Rating Count - {this.props.movie.imDbRatingCount}</div>
+                            Rating Count - {calcuateRating(this.props.movie.imDbRatingCount)}</div>
                         </div>
                 </div>
             </div>
