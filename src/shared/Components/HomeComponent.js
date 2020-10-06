@@ -280,7 +280,7 @@ export default class HomeComponent extends React.Component {
                             ))
                         }
                         {!this.state.isMobile &&
-                        <div className="m-2">
+                        <div className="m-2 d-flex justify-content-center">
                           <Pagination total={this.state.MovieLength} showPerPage={this.state.showPerPage} onPaginationChange={this.onPaginationChange} onButtonClick={this.onButtonClick} start={this.state.start} end={this.state.end} length={this.state.MovieLength} />
                         </div>
                         }

@@ -38,7 +38,7 @@ export default class MoviesComponent extends React.Component {
                 </div>
                 <div className="row">
                     <div className="col-6 col-md-8">
-                        <div className="ml-3" style={{color:this.props.movie.color}}>
+                        <div className="ml-4" style={{color:this.props.movie.color}}>
                             {!this.props.isMobile ?
                                 <span>Ratings - {this.props.movie.imDbRating}</span>
                                 :
