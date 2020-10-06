@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import LazyLoad from 'react-lazyload';
 import StarRating from './starRating';
 import {calcuateRating} from '../utility/ratingUtility'
+import axios from 'axios';
 
 export default class MoviesComponent extends React.Component {
     constructor(props){
