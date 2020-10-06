@@ -12,7 +12,6 @@ export default class MobileComponent extends React.Component {
        
     }
     componentDidMount(){
-        //api call()
         let isMobile = checkDevice()
          this.setState({isMobile:isMobile})
     }

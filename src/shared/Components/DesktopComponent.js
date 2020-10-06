@@ -27,7 +27,6 @@ export default class DesktopComponent extends React.Component {
     }
 
     onPaginationChange(start, end){
-        console.log(start,end)
         this.setState({start:start})
        //this.setState({start:start,end:end})
     }
@@ -38,12 +37,10 @@ export default class DesktopComponent extends React.Component {
         if (type === 'prev') {
                     this.setState({start:a-5})
                     this.setState({end:b-5})
-                    //counter === 1 ? setCounter(1) : setCounter(counter - 1);
                 } else if (type === 'next') {
                     console.log("111")
                     this.setState({start:a+5})
                     this.setState({end:b+5})
-                   // Math.ceil(total / showPerPage) === counter ? setCounter(counter) : setCounter(counter + 1);
                 }
     }
 
@@ -60,7 +57,7 @@ export default class DesktopComponent extends React.Component {
                      }
                      <div className="m-2 d-flex justify-content-center">
                           <Pagination total={this.state.MovieLength} showPerPage={this.state.showPerPage} onPaginationChange={this.onPaginationChange} onButtonClick={this.onButtonClick} start={this.state.start} end={this.state.end} length={this.state.MovieLength} />
-                        </div>
+                    </div>
         </Fragment>
         )
     }

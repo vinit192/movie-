@@ -10,7 +10,7 @@ export default class HomeComponent extends React.Component {
     constructor(props){
         super(props);
         this.state={
-            movieList : [      {
+            movieList123 : [      {
                 id:"tt0111161",
                 rank:"1",
                 title:"The Shawshank Redemption",
@@ -230,18 +230,18 @@ export default class HomeComponent extends React.Component {
                 imDbRating:"8.6",
                 imDbRatingCount:"1409962"
              }],
-             movieList123:[],
+             movieList:[],
              isMobile:'',
         }
     }
 
     componentDidMount(){
         //api call()
-    //     const API_KEY = 'k_HMZUnMrG';
-    //     axios.get(`https://imdb-api.com/en/API/Top250Movies/${API_KEY}`)
-    //   .then(res => {
-    //     this.setState({movieList:res.data.items})
-    //   })
+        const API_KEY = 'k_HMZUnMrG';
+        axios.get(`https://imdb-api.com/en/API/Top250Movies/${API_KEY}`)
+      .then(res => {
+        this.setState({movieList:res.data.items})
+      })
         let isMobile = checkDevice()
         this.setState({isMobile:isMobile})
         

@@ -6,7 +6,16 @@ import {calcuateRating} from '../utility/ratingUtility'
 export default class MoviesComponent extends React.Component {
     constructor(props){
         super(props);
-       
+       this.state={
+           plot:''
+       }
+    }
+    componentDidMount(){
+        const API_KEY = 'k_HMZUnMrG';
+        axios.get(`https://imdb-api.com/en/API/Title/${API_KEY}/props.movie.id`)
+      .then(res => {
+        this.setState({plot:res.data.plot})
+      })
     }
     render() {
     return (
@@ -18,7 +27,7 @@ export default class MoviesComponent extends React.Component {
                         <div className="rating">{this.props.movie.rank}</div>
                         <div className="ml-3">
                             <div className="font-weight-bold">{this.props.movie.title}</div>
-                            <div>{this.props.movie.description}</div>
+                            <div>{this.state.plot}</div>
                             <div className="rating">
                                 Year - {this.props.movie.year}
                             </div>
@@ -29,9 +38,7 @@ export default class MoviesComponent extends React.Component {
                 <div className="col-6 col-md-4"> 
                     <div className="float-right">
                         <div className="mt-2">
-                        <LazyLoad height={100}>
                             <img src={this.props.movie.image} height={100} width={this.props.isMobile?130:180}></img>
-                        </LazyLoad>
                         </div>
                     </div>
                 </div>

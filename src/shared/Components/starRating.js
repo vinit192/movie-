@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import StarRatings from 'react-star-ratings';
 
 export default class StarRatingComponent extends React.Component{
-    //const {rating} = props;
     constructor(props){
         super(props);;
     }
