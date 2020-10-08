@@ -12,8 +12,8 @@ export default class MoviesComponent extends React.Component {
        }
     }
     componentDidMount(){
-        const API_KEY = 'k_HMZUnMrG';
-        axios.get(`https://imdb-api.com/en/API/Title/${API_KEY}/props.movie.id`)
+        const API_KEY = 'k_zi9lnhd1';
+        axios.get(`https://imdb-api.com/en/API/Title/${API_KEY}/${this.props.movie.id}`)
       .then(res => {
         this.setState({plot:res.data.plot})
       })
